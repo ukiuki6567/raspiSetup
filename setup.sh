@@ -22,11 +22,14 @@ sudo systemctl enable hostapd
 
 sudo DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-persistent
 
-sudo cp /etc/dhcpcd.conf /etc/dhcpcd.conf.orig
-sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
+sudo cp /etc/dhcpcd.conf /etc/dhcpcd.conf.sta
+sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.sta
 
 sudo echo -e "\ninterface wlan0\n\tstatic ip_address=192.168.4.1/24\n\tnohook wpa_supplicant" | sudo tee -a /etc/dhcpcd.conf
 sudo echo -e "\ninterface=wlan0\ndhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h\ndomain=wlan\naddress=/gw.wlan/192.168.4.1" | sudo tee -a /etc/dnsmasq.conf
+
+sudo cp /etc/dhcpcd.conf /etc/dhcpcd.conf.ap
+sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.ap
 
 cat << EOS | sudo tee /etc/hostapd/hostapd.conf
 country_code=JP
