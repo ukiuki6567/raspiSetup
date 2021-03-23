@@ -7,15 +7,15 @@ sudo raspi-config nonint do_wifi_country JP
 sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_spi 0
 
-echo "17" > /sys/class/gpio/export
-echo "out" > /sys/class/gpio/gpio17/direction
-echo 1 > /sys/class/gpio/gpio17/value
-echo "27" > /sys/class/gpio/export
-echo "out" > /sys/class/gpio/gpio27/direction
-echo 1 > /sys/class/gpio/gpio27/value
-echo "22" > /sys/class/gpio/export
-echo "out" > /sys/class/gpio/gpio22/direction
-echo 1 > /sys/class/gpio/gpio22/value
+sudo echo "17" > /sys/class/gpio/export
+sudo echo "out" > /sys/class/gpio/gpio17/direction
+sudo echo 1 > /sys/class/gpio/gpio17/value
+sudo echo "27" > /sys/class/gpio/export
+sudo echo "out" > /sys/class/gpio/gpio27/direction
+sudo echo 1 > /sys/class/gpio/gpio27/value
+sudo echo "22" > /sys/class/gpio/export
+sudo echo "out" > /sys/class/gpio/gpio22/direction
+sudo echo 1 > /sys/class/gpio/gpio22/value
 
 echo "updating..."
 sudo apt update -y & sudo apt upgrade -y
