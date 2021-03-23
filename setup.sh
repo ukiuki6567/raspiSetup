@@ -3,10 +3,19 @@
 echo "setting Raspberry Pi..."
 sudo raspi-config nonint do_change_timezone Asia/Tokyo
 sudo raspi-config nonint do_change_locale ja_JP.UTF-8
-sudo raspi-config nonint do_hostname raspberrypi$1
 sudo raspi-config nonint do_wifi_country JP
 sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_spi 0
+
+echo "17" > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio17/direction
+echo 1 > /sys/class/gpio/gpio17/value
+echo "27" > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio27/direction
+echo 1 > /sys/class/gpio/gpio27/value
+echo "22" > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio22/direction
+echo 1 > /sys/class/gpio/gpio22/value
 
 echo "updating..."
 sudo apt update -y & sudo apt upgrade -y
@@ -60,3 +69,4 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 EOS
 
+sudo raspi-config nonint do_hostname raspberrypi$1
